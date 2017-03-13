@@ -36,12 +36,12 @@ var vm = new Vue({
                 for (var i = 0; i < results.length; i++) {
                     var place = results[i];
                     this.createMarker(results[i]);
+                    this.drawCircle();
                 }
             }
         },
 
         createMarker: function(pos) {
-            console.log(pos.geometry.location.lat());
             var marker = new google.maps.Marker({
                 position: new google.maps.LatLng(pos.geometry.location.lat(), pos.geometry.location.lng()),
             });
@@ -63,7 +63,22 @@ var vm = new Vue({
                 }
             });
 
-        }
+        },
+
+        drawCircle: function() {
+            var circle = new google.maps.Circle({
+                strokeColor: '#FF0000',
+                strokeOpacity: 0.1,
+                strokeWeight: 1,
+                fillColor: '#FF0000',
+                fillOpacity: 0.01,
+                map: map,
+                center: this.position,
+                radius: this.distance
+            });
+
+        },
+
     },
 
     mounted: function() {
