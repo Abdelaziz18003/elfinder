@@ -11,7 +11,8 @@ var vm = new Vue({
             lng: 0
         },
         type: "restaurant",
-        distance: 1000
+        distance: 1000,
+        headerExpanded: true
     },
     methods: {
         render: function() {

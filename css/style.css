@@ -17,8 +17,18 @@ header {
     background: #4285F4;
     min-height: 50px;
     padding-top: 8px;
+    transition: margin-top ease 0.7s;
 }
 
+header.collapsed {
+    margin-top: -126px;
+}
+
+h1 {
+    font-size: 28px;
+    line-height: 28px;
+    margin: 10px
+}
 .form-control {
     color: white;
     height: 35px;
@@ -28,6 +38,38 @@ header {
 }
 
 .hint {
-    padding: 5px 0px;
+    padding: 8px 0px;
     margin: 0px;
+}
+
+#slide {
+    border: 1px solid #F0AD4E;
+    background: #F0AD4E;
+    display: block;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    position: relative;
+    margin: 0px auto -20px;
+    padding-top: 8px;
+    transition: all ease 0.7s;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+header.collapsed #slide {
+    transform: rotateZ(180deg);
+}
+
+@media screen and (max-width: 768px) {
+    .form-control {
+        margin-top: 1px;
+    }
+    .btn {
+        width: 100%;
+        margin-top: 1px
+    }
+    header.collapsed {
+        margin-top: -253px;
+    }
 }

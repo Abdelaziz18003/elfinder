@@ -10,20 +10,24 @@
 
 <body>
     <div id="app">
-        <header>
+        <header :class="{'expanded' : headerExpanded, 'collapsed' : !headerExpanded}">
+            <h1>El-finder</h1>
             <form @submit.prevent="getLocation(address)" class="form-inline">
-                <label for="address"></label>
-                <input id="address" type="text" v-model="address" class="form-control">
+                <label for="address" class="hidden-xs">Address: </label>
+                <input id="address" type="text" v-model="address" class="form-control" placeholder="your address">
 
-                <label for="type"></label>
-                <input id="type" type="text" value="" v-model="type" class="form-control">
+                <label for="type" class="hidden-xs">Type: </label>
+                <input id="type" type="text" value="" v-model="type" class="form-control" placeholder="Type">
 
-                <label for="distance"></label>
-                <input id="distance" type="text" v-model="distance" class="form-control">
+                <label for="distance" class="hidden-xs">Distance: </label>
+                <input id="distance" type="text" v-model="distance" class="form-control" placeholder="Distance">
 
                 <button type="submit" class="btn btn-warning"><i class="glyphicon glyphicon-search"></i></button>
             </form>
             <p class="hint">Searching for {{type}}s that are {{distance}} meters away from {{address}} </p>
+            <div id="slide" @click="headerExpanded = !headerExpanded">
+                <i class="glyphicon glyphicon-chevron-up"></i>
+            </div>
         </header>
         <div id="map"></div>
     </div>
