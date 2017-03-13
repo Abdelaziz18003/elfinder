@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Search for up to 200 places with Radar Search</title>
+    <style>
+        /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+        
+        #map {
+            height: 100%;
+        }
+        /* Optional: Makes the sample page fill the window. */
+        
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <form>
+            <label for="my-position"></label>
+            <input id="my-position" type="text" v-model="myPosition">
+
+            <label for="type"></label>
+            <input id="type" type="text" value="mosque" v-model="type">
+
+            <label for="distance"></label>
+            <input id="distance" type="number" v-model="distance">
+        </form>
+        <div id="map" style="height: 300px; width: 500px;"></div>
+    </div>
+
+    <script src="js/vue.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=places,visualization" defer></script>
+    <script src="js/app.js" defer></script>
+</body>
+
+</html>
