@@ -24,15 +24,17 @@
 
 <body>
     <div id="app">
-        <form>
-            <label for="my-position"></label>
-            <input id="my-position" type="text" v-model="myPosition">
+        <form @submit.prevent="getLocation(address)">
+            <label for="address"></label>
+            <input id="address" type="text" v-model="address">
 
             <label for="type"></label>
-            <input id="type" type="text" value="mosque" v-model="type">
+            <input id="type" type="text" value="" v-model="type">
 
             <label for="distance"></label>
             <input id="distance" type="number" v-model="distance">
+
+            <button type="submit">search</button>
         </form>
         <div id="map" style="height: 300px; width: 500px;"></div>
     </div>

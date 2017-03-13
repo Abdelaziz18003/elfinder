@@ -5,16 +5,20 @@ var infowindow;
 var vm = new Vue({
     el: "#app",
     data: {
-        myPosition: "algiers",
+        address: "algiers",
+        position: {
+            lat: 0,
+            lng: 0
+        },
         type: "restaurant",
         distance: 1000
     },
     methods: {
-        initialize: function() {
-            var myPosition = new google.maps.LatLng(36.7538, 3.0588);
+        render: function() {
+            var myPosition = new google.maps.LatLng(this.position.lat, this.position.lng);
             map = new google.maps.Map(document.getElementById('map'), {
                 center: myPosition,
-                zoom: 15
+                zoom: 14
             });
 
             var request = {
@@ -43,10 +47,26 @@ var vm = new Vue({
             });
 
             marker.setMap(map);
+        },
+
+        getLocation: function(address) {
+            var geocoder = new google.maps.Geocoder();
+            var lat = 0,
+                lng = 0;
+
+            geocoder.geocode({ 'address': address }, function(results, status) {
+
+                if (status == google.maps.GeocoderStatus.OK) {
+                    vm.position.lat = results[0].geometry.location.lat();
+                    vm.position.lng = results[0].geometry.location.lng();
+                    vm.render();
+                }
+            });
+
         }
     },
 
     mounted: function() {
-        this.initialize();
+        this.getLocation(this.address);
     }
 })
