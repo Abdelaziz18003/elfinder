@@ -4,39 +4,28 @@
 <head>
     <meta charset="utf-8">
     <title>Search for up to 200 places with Radar Search</title>
-    <style>
-        /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-        
-        #map {
-            height: 100%;
-        }
-        /* Optional: Makes the sample page fill the window. */
-        
-        html,
-        body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-        }
-    </style>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
     <div id="app">
-        <form @submit.prevent="getLocation(address)">
-            <label for="address"></label>
-            <input id="address" type="text" v-model="address">
+        <header>
+            <form @submit.prevent="getLocation(address)" class="form-inline">
+                <label for="address"></label>
+                <input id="address" type="text" v-model="address" class="form-control">
 
-            <label for="type"></label>
-            <input id="type" type="text" value="" v-model="type">
+                <label for="type"></label>
+                <input id="type" type="text" value="" v-model="type" class="form-control">
 
-            <label for="distance"></label>
-            <input id="distance" type="number" v-model="distance">
+                <label for="distance"></label>
+                <input id="distance" type="text" v-model="distance" class="form-control">
 
-            <button type="submit">search</button>
-        </form>
-        <div id="map" style="height: 300px; width: 500px;"></div>
+                <button type="submit" class="btn btn-warning"><i class="glyphicon glyphicon-search"></i></button>
+            </form>
+            <p class="hint">Searching for {{type}} that are {{distance}} away from {{address}} </p>
+        </header>
+        <div id="map"></div>
     </div>
 
     <script src="js/vue.js"></script>

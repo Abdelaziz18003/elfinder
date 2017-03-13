@@ -1,0 +1,33 @@
+html,
+body,
+#app,
+#map {
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+header {
+    color: white;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    text-align: center;
+    background: #4285F4;
+    min-height: 50px;
+    padding-top: 8px;
+}
+
+.form-control {
+    color: white;
+    height: 35px;
+    border-radius: 3px;
+    background: #6BB1EF;
+    border: none;
+}
+
+.hint {
+    padding: 5px 0px;
+    margin: 0px;
+}
