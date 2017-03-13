@@ -36,9 +36,9 @@ var vm = new Vue({
                 for (var i = 0; i < results.length; i++) {
                     var place = results[i];
                     this.createMarker(results[i]);
-                    this.drawCircle();
                 }
             }
+            this.drawCircle();
         },
 
         createMarker: function(pos) {
@@ -68,15 +68,14 @@ var vm = new Vue({
         drawCircle: function() {
             var circle = new google.maps.Circle({
                 strokeColor: '#FF0000',
-                strokeOpacity: 0.1,
+                strokeOpacity: 0.4,
                 strokeWeight: 1,
                 fillColor: '#FF0000',
-                fillOpacity: 0.01,
+                fillOpacity: 0.1,
                 map: map,
                 center: this.position,
-                radius: this.distance
+                radius: Number(this.distance)
             });
-
         },
 
     },
